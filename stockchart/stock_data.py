@@ -12,7 +12,7 @@ def get_latest_closing_price(symbol):
         change = ((data['Open'][0] - data["Close"][0])/data['Open'][0])*100
         stock['symbol'] = symbol
         stock['price'] = format(data['Close'][0], ".2f")
-        stock['change'] = '^'+str(format(change, ".2f"))
+        stock['change'] = format(change, ".2f")
         return stock
     except Exception as e:
         print(e)
