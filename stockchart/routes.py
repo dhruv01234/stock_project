@@ -10,7 +10,6 @@ from PIL import Image
 from flask import url_for,current_app
 
 stocks = get_stocks()
-
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():

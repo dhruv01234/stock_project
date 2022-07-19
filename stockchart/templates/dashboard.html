@@ -6,10 +6,12 @@
                 <div class="media-body">
                     <h2><a class="article-title" href="#">{{ stock.symbol}}</a></h2>
                   </div>
-              <h2 class="article-title">${{ stock.price}}</h2>
-             
-              <p class="article-content col-6">{{ stock.change }}</p>
-             
+              <h2 class="article-title price">${{ stock.price}}</h2>
+             {%if stock.change >=0%}
+             <p class="article-content profit">{{ stock.change }}%</p>
+             {%else%}
+             <p class="article-content loss">{{ stock.change }}%</p>
+             {%endif%}
               
              
             </div>
