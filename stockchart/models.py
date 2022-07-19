@@ -1,6 +1,11 @@
-from stockchart import db
+from flask_login import UserMixin
+from stockchart import db,login_manager
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     firstname = db.Column(db.String(20),unique=False,nullable=False)
     lastname = db.Column(db.String(20),unique=False,nullable=True)
