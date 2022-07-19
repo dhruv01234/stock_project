@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} 
+{% block content %}
+        {%for stock in stocks%}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="media-body">
+                    <h2><a class="article-title" href="#">{{ stock.symbol}}</a></h2>
+                  </div>
+              <h2 class="article-title">${{ stock.price}}</h2>
+              <p class="article-content">{{ stock.change }}</p>
+            </div>
+          </article>
+        {%endfor%}
+{% endblock content %}
