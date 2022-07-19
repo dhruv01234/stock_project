@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import yfinance as yf
 
-tickers = ['ADX','MSFT']
+tickers = ['ADX','MSFT','IBM','XELA','HNST','NCR','AAPL','CNK','NFLX','SI']
 def get_latest_closing_price(symbol):
     stock = {}
     try:
@@ -21,4 +21,7 @@ def get_stocks():
     stocks = []
     for ticker in tickers:
         stocks.append(get_latest_closing_price(ticker))
+    print(stocks)
     return stocks
+
+get_stocks()
