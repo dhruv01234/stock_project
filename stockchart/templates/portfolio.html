@@ -16,7 +16,8 @@
              {%endif%}
              <h4 class="article-title">$You have buyed {{ stock.count}} stocks of {{stock.symbol}}</h4>
              {%if current_user.is_authenticated%}
-             <a href="#"><button class='btn btn-outline-info'>Sell</button></a>
+             <a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a>
+             <a href="{{url_for('sell_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Sell</button></a>
              {%endif%}
             </div>
           </article>

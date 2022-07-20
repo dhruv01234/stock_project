@@ -98,6 +98,7 @@ def portfolio():
             map['price'] = stock.price
             map['percent_change'] = stock.percent_change
             map['count'] = user_stocks.count(stock_id)
+            map['id'] = stock_id
             stocks.append(map)
         return render_template('portfolio.html',stocks=stocks)
     else:
@@ -110,4 +111,16 @@ def buy_stock(stock_id):
     current_user.stocks = updated_stock
     db.session.commit()
     flash('you have buy this stock','success')
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('portfolio'))
+
+@app.route("/stock/<int:stock_id>/sell",methods=['GET','POST'])
+@login_required
+def sell_stock(stock_id):
+    user_stocks = list(i for i in current_user.stocks[1:-1].split('.'))
+    user_stocks.remove(str(stock_id))
+    stocks = '.' + '.'.join(user_stocks) + '.'
+    current_user.stocks = stocks
+    db.session.commit()
+    print(current_user.stocks)
+    flash('you have sell this stock','success')
+    return redirect(url_for('portfolio'))
