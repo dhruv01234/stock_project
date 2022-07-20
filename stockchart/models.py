@@ -20,12 +20,11 @@ class User(db.Model,UserMixin):
         return f"User('{self.image_file}','{self.firstname}','{self.lastname}','{self.username}','{self.email}')"
 
 class Stock(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    symbol = db.Column(db.String(10),nullable=False,unique=True)
+    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
+    symbol = db.Column(db.String(10),nullable=False)
     price = db.Column(db.String(100),nullable=False)
     percent_change = db.Column(db.Text,nullable = False)
     
     def __repr__(self):
- 
         return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"
 

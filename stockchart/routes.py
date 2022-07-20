@@ -1,5 +1,3 @@
-# from crypt import methods
-# from crypt import methods
 from flask import render_template,flash, url_for,redirect,request
 from stockchart import app,bcrypt,db
 from stockchart.forms import ResgistrationForm,LoginForm,UpdateAccountForm
@@ -13,10 +11,15 @@ from flask import url_for,current_app
 
 stocks = get_stocks()
 
+for stock in stocks:
+    new_stock = Stock(symbol=stock['symbol'],price=stock['price'],percent_change=stock['change'])
+    db.session.add(new_stock)
+    db.session.commit()
+
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
-    stks=Stock.query.all()
+    stocks=Stock.query.all()
     return render_template('dashboard.html',stocks = stocks)
 
 @app.route("/register",methods=['GET','POST'])
