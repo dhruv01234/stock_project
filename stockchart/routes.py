@@ -10,17 +10,18 @@ from PIL import Image
 from stockchart.stock_data import get_latest_closing_price,get_stocks,tickers
 from flask import url_for,current_app
 
-for ticker in tickers:
-    cur_stock = Stock.query.filter_by(symbol=ticker).first()
-    stock = get_latest_closing_price(ticker)
-    cur_stock.price = stock['price']
-    cur_stock.percent_change = stock['change']
-    db.session.commit()
+
     
     
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
+    for ticker in tickers:
+        cur_stock = Stock.query.filter_by(symbol=ticker).first()
+        stock = get_latest_closing_price(ticker)
+        cur_stock.price = stock['price']
+        cur_stock.percent_change = stock['change']
+        db.session.commit()
     stocks=Stock.query.all()
     return render_template('dashboard.html',stocks = stocks)
 
