@@ -1,3 +1,4 @@
+from enum import unique
 from flask_login import UserMixin
 from stockchart import db,login_manager
 
@@ -20,9 +21,9 @@ class User(db.Model,UserMixin):
 
 class Stock(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    symbol = db.Column(db.String,nullable=False)
+    symbol = db.Column(db.String(10),nullable=False,unique=True)
     price = db.Column(db.String(100),nullable=False)
     percent_change = db.Column(db.Text,nullable = False)
     
     def __repr__(self):
-        return f"Post('{self.price}')"
+        return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"

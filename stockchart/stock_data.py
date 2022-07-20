@@ -22,5 +22,3 @@ def get_stocks():
     for ticker in tickers:
         stocks.append(get_latest_closing_price(ticker))
     return stocks
-
-get_stocks()
