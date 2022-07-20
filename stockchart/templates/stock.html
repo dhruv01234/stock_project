@@ -1,10 +1,9 @@
 {% extends 'layout.html' %} 
 {% block content %}
-        {%for stock in stocks%}
         <article class="media content-section">
             <div class="media-body">
                 <div class="media-body">
-                    <h2><a class="article-title" href="#">{{ stock.symbol}}</a></h2>
+                    <h2 class="article-title">{{ stock.symbol}}</h2>
                   </div>
               <h2 class="article-title price">${{ stock.price}}</h2>
              {%if stock.percent_change[0] != '-'%}
@@ -17,5 +16,4 @@
              {%endif%}
             </div>
           </article>
-        {%endfor%}
 {% endblock content %}

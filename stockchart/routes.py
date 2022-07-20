@@ -9,12 +9,6 @@ import secrets
 from PIL import Image
 from flask import url_for,current_app
 
-stocks = get_stocks()
-
-for stock in stocks:
-    new_stock = Stock(symbol=stock['symbol'],price=stock['price'],percent_change=stock['change'])
-    db.session.add(new_stock)
-    db.session.commit()
 
 @app.route("/")
 @app.route("/dashboard" )
@@ -98,3 +92,12 @@ def portfolio():
     else:
         return "<h1> login Please</h1>"
 
+@app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
+@login_required
+def buy_stock(stock_id):
+    updated_stock = current_user.stocks + stock_id + '.'
+    current_user.stocks = updated_stock
+    db.session.commit()
+    print(current_user.stocks)
+    flash('you have buy this stock','success')
+    return redirect(url_for('dashboard'))

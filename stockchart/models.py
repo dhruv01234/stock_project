@@ -1,4 +1,3 @@
-from enum import unique
 from flask_login import UserMixin
 from stockchart import db,login_manager
 
@@ -14,7 +13,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(120),unique=True,nullable=False)
     image_file = db.Column(db.String(20),nullable=False,default='default.jpg')
     password = db.Column(db.String(60),nullable = False)
-    # stocks = db.relationship('Stock',backref='buy',lazy=True)  
+    stocks = db.Column(db.String,nullable=False,default='.')  
     
     def __repr__(self):
         return f"User('{self.image_file}','{self.firstname}','{self.lastname}','{self.username}','{self.email}')"
@@ -27,4 +26,3 @@ class Stock(db.Model):
     
     def __repr__(self):
         return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"
-
