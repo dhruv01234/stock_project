@@ -26,3 +26,4 @@ class Stock(db.Model):
     
     def __repr__(self):
         return f"Post('{self.price}')"
+
