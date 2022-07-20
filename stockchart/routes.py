@@ -99,8 +99,6 @@ def portfolio():
             map['percent_change'] = stock.percent_change
             map['count'] = user_stocks.count(stock_id)
             stocks.append(map)
-        print(stocks)
-        
         return render_template('portfolio.html',stocks=stocks)
     else:
         return "<h1> login Please</h1>"
