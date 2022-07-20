@@ -26,4 +26,6 @@ class Stock(db.Model):
     percent_change = db.Column(db.Text,nullable = False)
     
     def __repr__(self):
+ 
         return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"
+

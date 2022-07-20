@@ -1,3 +1,5 @@
+# from crypt import methods
+# from crypt import methods
 from flask import render_template,flash, url_for,redirect,request
 from stockchart import app,bcrypt,db
 from stockchart.forms import ResgistrationForm,LoginForm,UpdateAccountForm
@@ -14,6 +16,7 @@ stocks = get_stocks()
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
+    stks=Stock.query.all()
     return render_template('dashboard.html',stocks = stocks)
 
 @app.route("/register",methods=['GET','POST'])
@@ -82,3 +85,13 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static',filename='profile_pics/'+current_user.image_file)
     return render_template('account.html',title='Account',image_file=image_file,form = form)
+
+
+@login_required
+@app.route("/portfolio" ,methods=['GET','POST'])
+def portfolio():
+    if current_user.is_authenticated:
+        return render_template('portfolio.html')
+    else:
+        return "<h1> login Please</h1>"
+
