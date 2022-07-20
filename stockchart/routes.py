@@ -85,10 +85,23 @@ def account():
 
 
 @login_required
-@app.route("/portfolio" ,methods=['GET','POST'])
+@app.route("/portfolio",methods=['GET'])
 def portfolio():
     if current_user.is_authenticated:
-        return render_template('portfolio.html')
+        user_stocks = list(int(i) for i in current_user.stocks[1:-1].split('.'))
+        stocks = []
+        stock_ids = set(user_stocks)
+        for stock_id in stock_ids:
+            map = {}
+            stock = Stock.query.get_or_404(stock_id)
+            map['symbol'] = stock.symbol
+            map['price'] = stock.price
+            map['percent_change'] = stock.percent_change
+            map['count'] = user_stocks.count(stock_id)
+            stocks.append(map)
+        print(stocks)
+        
+        return render_template('portfolio.html',stocks=stocks)
     else:
         return "<h1> login Please</h1>"
 
@@ -98,6 +111,5 @@ def buy_stock(stock_id):
     updated_stock = current_user.stocks + stock_id + '.'
     current_user.stocks = updated_stock
     db.session.commit()
-    print(current_user.stocks)
     flash('you have buy this stock','success')
     return redirect(url_for('dashboard'))
