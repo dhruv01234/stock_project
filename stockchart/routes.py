@@ -1,15 +1,23 @@
+from turtle import update
 from flask import render_template,flash, url_for,redirect,request
 from stockchart import app,bcrypt,db
 from stockchart.forms import ResgistrationForm,LoginForm,UpdateAccountForm
-from stockchart.stock_data import get_stocks
 from stockchart.models import User,Stock
 from flask_login import login_user,current_user,logout_user,login_required
 import os
 import secrets
 from PIL import Image
+from stockchart.stock_data import get_latest_closing_price,get_stocks,tickers
 from flask import url_for,current_app
 
-
+for ticker in tickers:
+    cur_stock = Stock.query.filter_by(symbol=ticker).first()
+    stock = get_latest_closing_price(ticker)
+    cur_stock.price = stock['price']
+    cur_stock.percent_change = stock['change']
+    db.session.commit()
+    
+    
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
