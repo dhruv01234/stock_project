@@ -10,15 +10,10 @@ from PIL import Image
 from flask import url_for,current_app
 
 stocks = get_stocks()
-for stock in stocks:
-    new_stock = Stock(symbol=stock['symbol'],price=stock['price'],percent_change=str(stock['change']))
-    db.session.add(new_stock)
-    # db.session.commit()
 
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
-    stocks = Stock.query.all()
     return render_template('dashboard.html',stocks = stocks)
 
 @app.route("/register",methods=['GET','POST'])
