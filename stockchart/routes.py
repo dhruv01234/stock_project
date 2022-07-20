@@ -88,7 +88,9 @@ def account():
 @app.route("/portfolio",methods=['GET'])
 def portfolio():
     if current_user.is_authenticated:
-        user_stocks = list(int(i) for i in current_user.stocks[1:-1].split('.'))
+        user_stocks = []
+        if(current_user.stocks != '.'):
+            user_stocks = list(int(i) for i in current_user.stocks[1:-1].split('.'))
         stocks = []
         stock_ids = set(user_stocks)
         for stock_id in stock_ids:
@@ -118,7 +120,9 @@ def buy_stock(stock_id):
 def sell_stock(stock_id):
     user_stocks = list(i for i in current_user.stocks[1:-1].split('.'))
     user_stocks.remove(str(stock_id))
-    stocks = '.' + '.'.join(user_stocks) + '.'
+    stocks = '.'
+    if(len(user_stocks)>0):
+        stocks = '.' + '.'.join(user_stocks) + '.'
     current_user.stocks = stocks
     db.session.commit()
     print(current_user.stocks)
