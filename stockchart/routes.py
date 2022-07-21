@@ -102,7 +102,8 @@ def portfolio():
             stocks.append(map)
         return render_template('portfolio.html',stocks=stocks)
     else:
-        return "<h1> login Please</h1>"
+        # return "<h1> login Please</h1>"
+        return redirect(url_for('login'))
 
 @app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
 @login_required
