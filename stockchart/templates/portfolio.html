@@ -2,7 +2,6 @@
 {% block content %}
         <marquee><h3 style="color: red;"> Hello, ''{{ current_user.username }}'' ! Welcome to Your Portfolio</h3></marquee>
         <h1>My Portfolio</h1>
-        
         {%for stock in stocks%}
         <article class="media content-section">
             <div class="media-body">
@@ -11,7 +10,7 @@
                   </div>
               <h2 class="article-title price">${{ stock.price}}</h2>
              {%if stock.percent_change[0] !='-'%}
-             <p class="article-content profit">{{ stock.percent_change }}%</p>
+             <p class="article-content profit">+{{ stock.percent_change }}%</p>
              {%else%}
              <p class="article-content loss">{{ stock.percent_change }}%</p>
              {%endif%}
