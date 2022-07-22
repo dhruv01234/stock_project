@@ -1,6 +1,36 @@
 {% extends 'layout.html' %} 
 {% block content %}
-<div class='heading left-pad'>
+<table style="width: 100%;">
+  <thead style="height: 50px;">
+    <th><b>Name</b></th>
+    <th><b>Symbol</b></th>
+    <th><b>Price</b></th>
+    <th><b>Change</b></th>
+    <th><b>Change(%)</b></th>
+    
+  </thead>
+  {%for stock in stocks%}
+  <tr>
+  <td>{{ stock.name }}</td>
+  <td>{{ stock.symbol }}</td>
+  <td>${{ stock.price }}</td>
+  {%if stock.change[0] != '-'%}
+  <td class="profit"><small>&and;</small>&nbsp;&nbsp;&nbsp;{{ stock.change }}</td>
+  {%else%}
+  <td class="loss"><small>&or;</small>&nbsp;&nbsp;{{ stock.change }}</td>
+  {%endif%}
+  {%if stock.percent_change[0] != '-'%}
+  <td class="profit">&nbsp;{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8593;</span></td>
+  {%else%}
+  <td class="loss">{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8595;</span></td>
+  {%endif%}
+  {%if current_user.is_authenticated%}
+  <td><a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a></td>
+  {%endif%}
+  </tr>
+  {%endfor%}
+</table>
+<!-- <div class='heading left-pad'>
   <h4>Symbol</h4>
   <h4>Price</h4>
   <h4>Change</h4>
@@ -28,5 +58,5 @@
              <a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a>
              {%endif%}
              <hr>
-        {%endfor%}
+        {%endfor%} -->
 {% endblock content %}
