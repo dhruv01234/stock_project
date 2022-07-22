@@ -1,5 +1,6 @@
 body {
-    background: #fafafa;
+    /* background: #fafafa; */
+    background: rgb(228, 242, 248);
     color: #333333;
     margin-top: 5rem;
 }
@@ -30,7 +31,8 @@ h6 {
 }
 
 .content-section {
-    background: #ffffff;
+    /* background: #ffffff; */
+    background: rgb(211, 232, 236);
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
@@ -94,4 +96,27 @@ a.article-title:hover {
 
 .price {
     color: blue;
+}
+.info
+{
+    /* color: rgba(248, 150, 3, 0.941); */
+    float: right;
+    animation:popup 1.5s linear infinite;
+}
+@keyframes popup {
+    0%
+    {
+        transform: scale(1.1);
+        color: rgb(251, 7, 255);
+    }
+    50%
+    {
+        transform: scale(0.8);
+        color: rgb(248, 236, 3);
+    }
+    100%
+    {
+        transform: scale(1.1);
+        color: red;
+    }
 }
