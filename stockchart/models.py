@@ -23,6 +23,15 @@ class Stock(db.Model):
     symbol = db.Column(db.String(10),nullable=False)
     price = db.Column(db.String(100),nullable=False)
     percent_change = db.Column(db.Text,nullable = False)
+    name = db.Column(db.Text,nullable = False)
+    change = db.Column(db.Text,nullable = False)
     
     def __repr__(self):
         return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"
+
+# from stockchart.stock_data import get_latest_closing_price,tickers
+# for ticker in tickers:
+#     stocks = get_latest_closing_price(ticker)
+#     stock = Stock(symbol=ticker,price=stocks['price'],percent_change=stocks['change'],name=stocks['name'],change=stocks['changeInPrice'])
+#     db.session.add(stock)
+#     db.session.commit()

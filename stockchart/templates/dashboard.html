@@ -3,15 +3,20 @@
 <div class='heading left-pad'>
   <h4>Symbol</h4>
   <h4>Price</h4>
-  <h4>Percent Change</h4>
+  <h4>Change</h4>
+  <h4>Change(%)</h4>
 </div>
         {%for stock in stocks%}
         <article class="media content-section">
-          
+          <div>
+            <p>{{stock.name}}</p>
+          </div>
             <div class="media-body heading">
               
                     <h2 class="article-title start">{{ stock.symbol}}</h2>
                     <h2 class="article-title price start">${{ stock.price}}</h2>
+                    <h2 class="article-title price start">${{ stock.change}}</h2>
+                  
                     {%if stock.percent_change[0] != '-'%}
              <p class="article-content profit start">+{{ stock.percent_change }}%</p>
              {%else%}
