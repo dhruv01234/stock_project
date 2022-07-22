@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} 
 {% block content %}
         <marquee><h3 style="color: red;"> Hello, ''{{ current_user.username }}'' ! Welcome to Your Portfolio</h3></marquee>
-        <h1>My Portfolio</h1>
+        <h1>You have buyed {{no_of_stocks}} different Stocks.</h1>
         {%for stock in stocks%}
         <article class="media content-section">
             <div class="media-body">

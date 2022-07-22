@@ -111,9 +111,9 @@ def portfolio():
             map['count'] = user_stocks.count(stock_id)
             map['id'] = stock_id
             stocks.append(map)
-        return render_template('portfolio.html',stocks=stocks)
+        no_of_stocks = len(stocks)
+        return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks)
     else:
-        # return "<h1> login Please</h1>"
         return redirect(url_for('login'))
 
 @app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
@@ -122,7 +122,7 @@ def buy_stock(stock_id):
     updated_stock = current_user.stocks + stock_id + '.'
     current_user.stocks = updated_stock
     db.session.commit()
-    flash('you have buy this stock','success')
+    flash(f'you have buyed a stock','success')
     return redirect(url_for('portfolio'))
 
 @app.route("/stock/<int:stock_id>/sell",methods=['GET','POST'])
@@ -136,5 +136,5 @@ def sell_stock(stock_id):
     current_user.stocks = stocks
     db.session.commit()
     print(current_user.stocks)
-    flash('you have sell this stock','success')
+    flash('you have sell a stock','success')
     return redirect(url_for('portfolio'))
