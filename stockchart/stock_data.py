@@ -14,7 +14,6 @@ def get_latest_closing_price(symbol):
         stock['change'] =  str(format(change, ".2f"))
         stock['name'] = ticker.info['shortName']
         stock['changeInPrice'] = format(data['Close'][1]-data['Close'][0],'.2f')
-        print()
         return stock
     except Exception as e:
         print(e)

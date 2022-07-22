@@ -28,6 +28,7 @@
         
         .site-header .navbar-nav .nav-link.active {
             font-weight: 500;
+            color: #ffffff;
         }
         
         .content-section {
