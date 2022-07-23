@@ -26,9 +26,14 @@ h6 {
     color: #ffffff;
 }
 
-.site-header .navbar-nav .nav-link.active {
+.site-header .navbar-nav .nav-link:active {
     font-weight: 500;
     color: #ffffff;
+}
+
+.navbar .active {
+    font-weight: 500;
+    color: red;
 }
 
 .content-section {
