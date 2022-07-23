@@ -30,7 +30,7 @@ class Stock(db.Model):
         return f"Post('{self.price}','{self.symbol}','{self.percent_change}')"
 
 # from stockchart.stock_data import get_latest_closing_price,tickers
-# for ticker in tickers:
+# for ticker in ['FBIO']:
 #     stocks = get_latest_closing_price(ticker)
 #     stock = Stock(symbol=ticker,price=stocks['price'],percent_change=stocks['change'],name=stocks['name'],change=stocks['changeInPrice'])
 #     db.session.add(stock)

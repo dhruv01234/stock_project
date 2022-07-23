@@ -10,14 +10,14 @@ def get_latest_closing_price(symbol):
         data = ticker.history(period="2d")
         change =  ((data['Close'][1]-data['Close'][0])/data['Close'][1])*100
         stock['symbol'] = symbol
-        stock['price'] = format(data['Close'][0], ".2f")
+        stock['price'] = format(data['Close'][1], ".2f")
         stock['change'] =  str(format(change, ".2f"))
         # stock['name'] = ticker.info['shortName']
         stock['changeInPrice'] = format(data['Close'][1]-data['Close'][0],'.4f')
         return stock
     except Exception as e:
         print(e)
-
+# print(get_latest_closing_price('ADX'))
 def get_stocks():
     stocks = []
     for ticker in tickers:
