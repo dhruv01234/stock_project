@@ -12,7 +12,7 @@
   {%for stock in stocks%}
   <tr>
   <td>{{ stock.name }}</td>
-  <td><a href="#">{{ stock.symbol }}</a></td>
+  <td><a href="{{url_for('stock',stock_id=stock.id)}}">{{ stock.symbol }}</a></td>
   <td>${{ stock.price }}</td>
   {%if stock.change[0] != '-'%}
   <td class="profit"><small>&and;</small>&nbsp;&nbsp;&nbsp;{{ stock.change }}</td>
