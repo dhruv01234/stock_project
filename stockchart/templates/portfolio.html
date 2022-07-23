@@ -50,9 +50,9 @@
 
           <td><b>${{  stock.total }}</b></td>
           {%if stock.percent_change[0] != '-'%}
-          <td class="profit">&nbsp;{{ stock.pro_loss }}&nbsp;&nbsp;<span>&#8593;</span></td>
+          <td class="profit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ stock.pro_loss }}&nbsp;&nbsp;<span>&#8593;</span></td>
           {%else%}
-          <td class="loss">{{ stock.pro_loss }}&nbsp;&nbsp;<span>&#8595;</span></td>
+          <td class="loss">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ stock.pro_loss }}&nbsp;&nbsp;<span>&#8595;</span></td>
           {%endif%}
           {%if current_user.is_authenticated%}
           <td><a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a></td>
