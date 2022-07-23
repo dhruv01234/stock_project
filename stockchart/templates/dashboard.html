@@ -1,13 +1,14 @@
 {% extends 'layout.html' %} 
 {% block content %}
 <table style="width: 100%;">
-  <thead style="height: 50px;">
+  <thead class="fixed" style="height: 50px ;">
     <th><b>Name</b></th>
     <th><b>Symbol</b></th>
     <th><b>Price</b></th>
     <th><b>Change</b></th>
     <th><b>Change(%)</b></th>
   </thead>
+  <hr>
   {%for stock in stocks%}
   <tr>
   <td>{{ stock.name }}</td>
