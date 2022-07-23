@@ -45,5 +45,7 @@ class UpdateAccountForm(FlaskForm):
         if user:
             raise ValidationError('Email is already registered')
 
-
+class searchForm(FlaskForm):
+    search = StringField('Search here',validators=[DataRequired()])
+    submit = SubmitField('Search')
 

@@ -1,6 +1,35 @@
 {% extends 'layout.html' %} 
 {% block content %}
-<table style="width: 100%;">
+
+<article class="regular">
+  <input type="text" id="tbuser" placeholder="Search.." onkeyup=searchFun()>
+  <input type="button" id="btn1" value="Search"> 
+</article>
+<script>
+
+  const searchFun = () =>{
+      let filter = document.getElementById('tbuser').value.toUpperCase();
+      let myTable = document.getElementById('mytable');
+      let tr = myTable.getElementsByTagName('tr');
+      for(var i=1;i<tr.length;i++){
+        let td = tr[i].getElementsByTagName('td')[1];
+        if(td){
+          let textvalue = td.textContent || td.innerHTML;
+
+          if(textvalue.toUpperCase().indexOf(filter)>-1){
+            tr[i].style.display = "";
+          }else{
+            tr[i].style.display = "none";
+          }
+        }
+
+      }
+      
+  }
+
+
+</script>
+<table style="width: 100%;" id="mytable">
   <thead class="fixed" style="height: 50px ;">
     <th><b>Name</b></th>
     <th><b>Symbol</b></th>

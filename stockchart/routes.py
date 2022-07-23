@@ -123,10 +123,14 @@ def portfolio():
         return redirect(url_for('login'))
     
 @app.route("/stock/<stock_id>",methods=['GET','POST'])
-# @login_required
 def stock(stock_id):
     stock = Stock.query.get_or_404(stock_id)
     return render_template('stock.html',stock=stock)
+
+# @app.route("/stock/<stock_id>",methods=['GET','POST'])
+# def search(stock):
+#     stock = Stock.query.get_or_404(stock)
+#     return render_template('stock.html',stock=stock)
 
 @app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
 @login_required
