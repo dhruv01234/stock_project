@@ -1,4 +1,5 @@
 from flask import render_template,flash, url_for,redirect,request
+from numpy import double
 from stockchart import app,bcrypt,db
 from stockchart.forms import ResgistrationForm,LoginForm,UpdateAccountForm
 from stockchart.models import User,Stock
@@ -111,12 +112,19 @@ def portfolio():
             map['percent_change'] = stock.percent_change
             map['count'] = user_stocks.count(stock_id)
             map['id'] = stock_id
+
             map['total']="{:.2f}".format(float(stock.price)*user_stocks.count(stock_id))
             stocks.append(map)
         no_of_stocks = len(stocks)
         return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks)
     else:
         return redirect(url_for('login'))
+    
+@app.route("/stock/<stock_id>",methods=['GET','POST'])
+@login_required
+def stock(stock_id):
+    stock = Stock.query.get_or_404(stock_id)
+    return render_template('stock.html',stock=stock)
 
 @app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
 @login_required

@@ -26,7 +26,7 @@
 
         <table style="width: 100%;">
           <thead style="height: 50px;">
-            <th><b>Name</b></th>
+            <th><b>Symbol</b></th>
             <!-- <th><b>Symbol</b></th> -->
             <th><b>Price</b></th>
             <th><b>Change(%)</b></th>
@@ -37,7 +37,7 @@
           {%for stock in stocks%}
           <tr>
           <!-- <td>{{ stock.name }}</td> -->
-          <td>{{ stock.symbol }}</td>
+          <td><a href="{{url_for('stock',stock_id=stock.id)}}">{{ stock.symbol }}</a></td>
           <td>${{ stock.price }}</td>
           {%if stock.percent_change[0] != '-'%}
           <td class="profit">&nbsp;{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8593;</span></td>
@@ -46,6 +46,7 @@
           {%endif%}
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ stock.count }}</td>
           
+
           <td><b>${{  stock.total }}</b></td>
           {%if current_user.is_authenticated%}
           <td><a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a></td>
