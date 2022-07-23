@@ -112,9 +112,8 @@ def portfolio():
             map['percent_change'] = stock.percent_change
             map['count'] = user_stocks.count(stock_id)
             map['id'] = stock_id
-            cost = double(stock.price)*user_stocks.count(stock_id)
-            cost = format(cost,'.2f')
-            map['cost'] = cost
+
+            map['total']="{:.2f}".format(float(stock.price)*user_stocks.count(stock_id))
             stocks.append(map)
         no_of_stocks = len(stocks)
         return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks)
