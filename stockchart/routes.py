@@ -123,7 +123,7 @@ def portfolio():
         return redirect(url_for('login'))
     
 @app.route("/stock/<stock_id>",methods=['GET','POST'])
-@login_required
+# @login_required
 def stock(stock_id):
     stock = Stock.query.get_or_404(stock_id)
     return render_template('stock.html',stock=stock)
