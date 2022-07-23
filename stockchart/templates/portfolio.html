@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} 
 {% block content %}
         <marquee><h3 style="color: red;"> Hello, ''{{ current_user.username }}'' ! Welcome to Your Portfolio</h3></marquee>
-        <h1>You have buyed {{no_of_stocks}} different Stocks.</h1>
+        <!-- <h1>You have buyed {{no_of_stocks}} different Stocks.</h1>
         {%for stock in stocks%}
         <article class="media content-section">
             <div class="media-body">
@@ -21,5 +21,37 @@
              {%endif%}
             </div>
           </article>
-        {%endfor%}
+        {%endfor%} -->
+
+
+        <table style="width: 100%;">
+          <thead style="height: 50px;">
+            <th><b>Name</b></th>
+            <!-- <th><b>Symbol</b></th> -->
+            <th><b>Price</b></th>
+            <th><b>Change(%)</b></th>
+            <th><b>Quantity</b></th>
+            <th><b>Total</b></th>
+            
+          </thead>
+          {%for stock in stocks%}
+          <tr>
+          <!-- <td>{{ stock.name }}</td> -->
+          <td>{{ stock.symbol }}</td>
+          <td>${{ stock.price }}</td>
+          {%if stock.percent_change[0] != '-'%}
+          <td class="profit">&nbsp;{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8593;</span></td>
+          {%else%}
+          <td class="loss">{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8595;</span></td>
+          {%endif%}
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ stock.count }}</td>
+          
+          <td>{{  stock.price }}</td>
+          {%if current_user.is_authenticated%}
+          <td><a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a></td>
+          <td><a href="{{url_for('sell_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Sell</button></a></td>
+          {%endif%}
+          </tr>
+          {%endfor%}
+        </table>
 {% endblock content %}
