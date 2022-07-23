@@ -59,4 +59,8 @@
              {%endif%}
              <hr>
         {%endfor%} -->
+        {%if current_user.is_authenticated%}
+        {%else%}
+        <script>alert("Login to Buy the Stock")</script>
+        {%endif%}
 {% endblock content %}
