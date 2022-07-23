@@ -46,7 +46,7 @@
           {%endif%}
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ stock.count }}</td>
           
-          <td>{{  stock.price }}</td>
+          <td>{{  stock.cost }}</td>
           {%if current_user.is_authenticated%}
           <td><a href="{{url_for('buy_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Buy</button></a></td>
           <td><a href="{{url_for('sell_stock',stock_id=stock.id)}}"><button class='btn btn-outline-info'>Sell</button></a></td>
