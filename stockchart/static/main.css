@@ -31,9 +31,9 @@
                 color: #ffffff;
             }
             
-            .navbar .active {
+            .active {
                 font-weight: 500;
-                color: red;
+                color: #ffffff;
             }
             
             .content-section {

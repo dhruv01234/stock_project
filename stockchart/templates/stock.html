@@ -3,7 +3,7 @@
 <table style="width: 100%;">
    <tr>
     <td class="bold">{{ stock.name }}</td>
-    <td class="bold"><a href="#">{{ stock.symbol }}</a></td>
+    <td class="bold">{{ stock.symbol }}</td>
     <td class="bold">Price:${{ stock.price }}</td>
     {%if stock.change[0] != '-'%}
     <td class="profit bold">Change:<small>&and;</small>&nbsp;&nbsp;&nbsp;{{ stock.change }}</td>

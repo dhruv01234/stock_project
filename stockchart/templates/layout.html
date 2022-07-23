@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='main.css') }}"> 
-    <script defer src='{{url_for('static',filename='activePage.js') }}'></script>
 </head>
 
 <body >
@@ -28,22 +27,12 @@
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 {%if current_user.is_authenticated%}
-                <li>
-                  <a class="nav-item nav-link" href="{{url_for('portfolio')}}">My Portfolio</a>
-                </l1>
-                <li>
-                  <a class="nav-item nav-link" href="{{url_for('account')}}">Account</a>
-                </l1>
-                <li>
-                  <a class="nav-item nav-link" href="{{url_for('logout')}}">Logout</a>
-                </l1>
-                  {%else%}
-                  <li>
-                    <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
-                  </l1>
-                  <li>
-                    <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
-                  </l1>
+                <a class="nav-item nav-link" href="{{url_for('portfolio')}}">My Portfolio</a>
+                <a class="nav-item nav-link" href="{{url_for('account')}}">Account</a>
+                <a class="nav-item nav-link" href="{{url_for('logout')}}">Logout</a>
+                {%else%}
+                <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
+                <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
                 {%endif%}
                
               </div>
@@ -86,5 +75,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 
 </body>
+<script type="text/javascript">
 
+const activePage = window.location.pathname.split("/").pop();
+const navLinks = document.querySelectorAll('.navbar-nav a').
+forEach(link => {
+    if (link.href.includes('${activePage}')) {
+        link.classList.add('active');
+    }
+});
+</script>
 </html>
