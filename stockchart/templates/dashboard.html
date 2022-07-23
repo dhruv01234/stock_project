@@ -7,7 +7,6 @@
     <th><b>Price</b></th>
     <th><b>Change</b></th>
     <th><b>Change(%)</b></th>
-    
   </thead>
   {%for stock in stocks%}
   <tr>
@@ -15,9 +14,9 @@
   <td><a href="{{url_for('stock',stock_id=stock.id)}}">{{ stock.symbol }}</a></td>
   <td>${{ stock.price }}</td>
   {%if stock.change[0] != '-'%}
-  <td class="profit"><small>&and;</small>&nbsp;&nbsp;&nbsp;{{ stock.change }}</td>
+  <td class="profit">{{ stock.change }}</td>
   {%else%}
-  <td class="loss"><small>&or;</small>&nbsp;&nbsp;{{ stock.change }}</td>
+  <td class="loss">{{ stock.change }}</td>
   {%endif%}
   {%if stock.percent_change[0] != '-'%}
   <td class="profit">&nbsp;{{ stock.percent_change }}%&nbsp;&nbsp;<span>&#8593;</span></td>
