@@ -9,12 +9,3 @@ btn1.addEventListener('click', fun1);
 
 
 
-  //js
-
-//   $(document).ready(function () {
-  
-//     $("nav-link").click(function (){
-//       $(this).addClass("active").siblings().removeClass("active");
-//     });
-//   });
-  
