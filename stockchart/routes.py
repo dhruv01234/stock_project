@@ -147,6 +147,6 @@ def sell_stock(stock_id):
         stocks = '.' + '.'.join(user_stocks) + '.'
     current_user.stocks = stocks
     db.session.commit()
-    print(current_user.stocks)
+    # print(current_user.stocks)
     flash('you have sell a stock','success')
     return redirect(url_for('portfolio'))

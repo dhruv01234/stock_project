@@ -165,3 +165,10 @@
             .bold {
                 font-weight: bolder;
             }
+            .regular {
+                margin-left: 750px;
+            }
+            .regular input
+            {
+                border-radius: 15px;
+            }
