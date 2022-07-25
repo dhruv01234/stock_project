@@ -1,5 +1,4 @@
 from flask import render_template,flash, url_for,redirect,request
-from numpy import double
 from stockchart import app,bcrypt,db
 from stockchart.forms import ResgistrationForm,LoginForm,UpdateAccountForm
 from stockchart.models import User,Stock
@@ -8,9 +7,7 @@ import os
 import secrets
 from PIL import Image
 from flask import url_for,current_app
-from stockchart.stock_data import get_latest_closing_price,tickers,get_stocks
-
-
+from stockchart.stock_data import get_latest_closing_price,tickers
 
     
 @app.route("/")
