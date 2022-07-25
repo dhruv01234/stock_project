@@ -167,11 +167,13 @@
                     
                     .regular input {
                         border-radius: 15px;
-                        width: 200px;
+                        border-color: #333333;
+                        width: 300px;
+                        background-color: #c5e0f5;
                     }
                     
                     a:is(:link, :active, :visited).active {
                         /* color: rgb(95, 120, 138); */
-                        background-color: red;
-                        border-radius: 20px;
+                        background-color: rgb(65, 91, 107);
+                        border-radius: 10px;
                     }
