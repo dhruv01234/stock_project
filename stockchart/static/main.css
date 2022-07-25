@@ -23,12 +23,12 @@
                     }
                     
                     .site-header .navbar-nav .nav-link:hover {
+                        font-weight: 500;
                         color: #ffffff;
                     }
                     
                     .site-header .navbar-nav .nav-link:active {
-                        font-weight: 500;
-                        color: #f93e3e;
+                        color: #ffffff;
                     }
                     
                     .content-section {
@@ -171,7 +171,7 @@
                     }
                     
                     a:is(:link, :active, :visited).active {
-                        font-weight: 500;
+                        /* color: rgb(95, 120, 138); */
                         background-color: red;
                         border-radius: 20px;
                     }
