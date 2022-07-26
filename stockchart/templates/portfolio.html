@@ -1,43 +1,6 @@
 {% extends 'layout.html' %} 
 {% block content %}
         <marquee><h3 style="color: red;"> Hello, ''{{ current_user.username }}'' ! Welcome to Your Portfolio</h3></marquee>
-
-        <!-- <form>
-          <fieldset class="portfolio-value">
-            <legend style="text-transform:uppercase;font-size:1.6em">Portfolio Holdings</legend>
-           <div>
-            <table style="width: 100%;">
-              <thead style="height: 50px;">
-                <th><b>Current value</b></th>
-                <th><b>Return</b></th>
-                <th><b>Return(%)</b></th>
-                
-              </thead>
-              
-              <tr>
-              
-              <td>
-                ${{ current_value}}
-              </td>
-          
-                {%if return_value[0] != '-'%}
-          <td class="profit">&nbsp;{{ return_value }}%&nbsp;&nbsp;<span>&#8593;</span></td>
-          {%else%}
-          <td class="loss">{{ return_value }}%&nbsp;&nbsp;<span>&#8595;</span></td>
-          {%endif%}
-              
-              {%if return_percent[0] != '-'%}
-          <td class="profit">&nbsp;{{ return_percent }}%&nbsp;&nbsp;<span>&#8593;</span></td>
-          {%else%}
-          <td class="loss">{{ return_percent }}%&nbsp;&nbsp;<span>&#8595;</span></td>
-          {%endif%}
-              
-              </tr>
-            </table>
-           </div>
-          </fieldset>
-        </form> -->
-        <!-- <hr> -->
         <div class="box">
           <div class="box1">
             <h3><b>Current Holdings ::</b></h3>
@@ -53,7 +16,6 @@
         <table style="width: 100%;">
           <thead style="height: 50px;">
             <th><b>Symbol</b></th>
-            <!-- <th><b>Symbol</b></th> -->
             <th><b>Price</b></th>
             <th><b>Change(%)</b></th>
             <th><b>Quantity</b></th>
