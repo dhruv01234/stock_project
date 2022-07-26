@@ -114,8 +114,17 @@ def portfolio():
             pro_loss = format(float(total)*(float(stock.percent_change)/100),'.2f')
             map['pro_loss'] = pro_loss
             stocks.append(map)
+        current_value = 0
+        return_value = 0
+        for map in stocks:
+            current_value += float(map['total'])
+            return_value += float(map['pro_loss'])
+        return_percent = format((return_value/current_value)*100,'.2f')
+        current_value = format(current_value,'.2f')
+        return_value = format(return_value,'.2f')
+        
         no_of_stocks = len(stocks)
-        return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks)
+        return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks,current_value=current_value,return_value=return_value,return_percent=return_percent)
     else:
         return redirect(url_for('login'))
     
