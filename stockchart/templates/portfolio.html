@@ -2,9 +2,9 @@
 {% block content %}
         <marquee><h3 style="color: red;"> Hello, ''{{ current_user.username }}'' ! Welcome to Your Portfolio</h3></marquee>
 
-        <form>
+        <!-- <form>
           <fieldset class="portfolio-value">
-            <legend style="text-transform:uppercase;fonr-size:1.6em">Potfolio Holdings</legend>
+            <legend style="text-transform:uppercase;font-size:1.6em">Portfolio Holdings</legend>
            <div>
             <table style="width: 100%;">
               <thead style="height: 50px;">
@@ -24,8 +24,20 @@
             </table>
            </div>
           </fieldset>
-        </form>
-        <hr>
+        </form> -->
+        <!-- <hr> -->
+        <div class="box">
+          <div class="box1">
+            <h3><b>Current Holdings ::</b></h3>
+          </div>
+          <div class="innerbox">
+          <tr>
+            <th><b class="hold">Current value:</b>&nbsp;&nbsp;<span>${{ current_value}} </span>&nbsp;&nbsp;</th>
+            <th><b class="hold">Returns:</b>&nbsp;&nbsp;<span>${{ return_value}}</span>&nbsp;&nbsp;</th>
+            <th><b class="hold">Returns(%):</b>&nbsp;&nbsp;<span>{{ return_percent}}% </span>&nbsp;&nbsp;</th>
+          </tr>
+        </div>
+        </div>
         <table style="width: 100%;">
           <thead style="height: 50px;">
             <th><b>Symbol</b></th>
