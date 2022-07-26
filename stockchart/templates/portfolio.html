@@ -8,8 +8,16 @@
           <div class="innerbox">
           <tr>
             <th><b class="hold">Current value:</b>&nbsp;&nbsp;<span>${{ current_value}} </span>&nbsp;&nbsp;</th>
-            <th><b class="hold">Returns:</b>&nbsp;&nbsp;<span>${{ return_value}}</span>&nbsp;&nbsp;</th>
-            <th><b class="hold">Returns(%):</b>&nbsp;&nbsp;<span>{{ return_percent}}% </span>&nbsp;&nbsp;</th>
+            {%if return_value[0] != '-'%}
+            <th><b class="hold">Returns:</b>&nbsp;&nbsp;<span class="profit">${{ return_value}}</span>&nbsp;&nbsp;</th>
+            {%else%}
+            <th><b class="hold">Returns:</b>&nbsp;&nbsp;<span class="loss">${{ return_value}}</span>&nbsp;&nbsp;</th>
+            {%endif%}
+            {%if return_percent[0] != '-'%}
+            <th><b class="hold">Returns(%):</b>&nbsp;&nbsp;<span class="profit">{{ return_percent}}% </span>&nbsp;&nbsp;</th>
+            {%else%}
+            <th><b class="hold">Returns(%):</b>&nbsp;&nbsp;<span class="loss">{{ return_percent}}% </span>&nbsp;&nbsp;</th>
+            {%endif%}
           </tr>
         </div>
         </div>
