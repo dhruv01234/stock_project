@@ -13,15 +13,17 @@ from stockchart.stock_data import get_latest_closing_price,tickers
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
-    for ticker in tickers:
-        cur_stock = Stock.query.filter_by(symbol=ticker).first()
-        stock = get_latest_closing_price(ticker)
-        cur_stock.price = stock['price']
-        cur_stock.percent_change = stock['change']
-        cur_stock.change = stock['changeInPrice']
-        db.session.commit()
+    try:
+        for ticker in tickers:
+            cur_stock = Stock.query.filter_by(symbol=ticker).first()
+            stock = get_latest_closing_price(ticker)
+            cur_stock.price = stock['price']
+            cur_stock.percent_change = stock['change']
+            cur_stock.change = stock['changeInPrice']
+            db.session.commit()
+    except Exception as e:
+        return render_template('error.html')
     stocks=Stock.query.all()
-    # stocks = get_stocks()
     return render_template('dashboard.html',stocks = stocks)
 
 @app.route("/register",methods=['GET','POST'])
@@ -119,9 +121,9 @@ def portfolio():
         for map in stocks:
             current_value += float(map['total'])
             return_value += float(map['pro_loss'])
-        return_percent = format((return_value/current_value)*100,'.2f')
+        return_percent = str(format((return_value/current_value)*100,'.2f'))
         current_value = format(current_value,'.2f')
-        return_value = format(return_value,'.2f')
+        return_value = str(format(return_value,'.2f'))
         
         no_of_stocks = len(stocks)
         return render_template('portfolio.html',stocks=stocks,no_of_stocks=no_of_stocks,current_value=current_value,return_value=return_value,return_percent=return_percent)

@@ -10,15 +10,27 @@
               <thead style="height: 50px;">
                 <th><b>Current value</b></th>
                 <th><b>Return</b></th>
-                <th><b>Profit/Loss(%)</b></th>
+                <th><b>Return(%)</b></th>
                 
               </thead>
               
               <tr>
               
-              <td>${{ current_value}}</td>
-              <td>${{ return_value}}</td>
-              <td>${{ return_percent}}</td>
+              <td>
+                ${{ current_value}}
+              </td>
+          
+                {%if return_value[0] != '-'%}
+          <td class="profit">&nbsp;{{ return_value }}%&nbsp;&nbsp;<span>&#8593;</span></td>
+          {%else%}
+          <td class="loss">{{ return_value }}%&nbsp;&nbsp;<span>&#8595;</span></td>
+          {%endif%}
+              
+              {%if return_percent[0] != '-'%}
+          <td class="profit">&nbsp;{{ return_percent }}%&nbsp;&nbsp;<span>&#8593;</span></td>
+          {%else%}
+          <td class="loss">{{ return_percent }}%&nbsp;&nbsp;<span>&#8595;</span></td>
+          {%endif%}
               
               </tr>
             </table>
