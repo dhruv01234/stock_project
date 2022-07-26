@@ -13,15 +13,17 @@ from stockchart.stock_data import get_latest_closing_price,tickers
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
-    for ticker in tickers:
-        cur_stock = Stock.query.filter_by(symbol=ticker).first()
-        stock = get_latest_closing_price(ticker)
-        cur_stock.price = stock['price']
-        cur_stock.percent_change = stock['change']
-        cur_stock.change = stock['changeInPrice']
-        db.session.commit()
+    try:
+        for ticker in tickers:
+            cur_stock = Stock.query.filter_by(symbol=ticker).first()
+            stock = get_latest_closing_price(ticker)
+            cur_stock.price = stock['price']
+            cur_stock.percent_change = stock['change']
+            cur_stock.change = stock['changeInPrice']
+            db.session.commit()
+    except Exception as e:
+        return render_template('error.html')
     stocks=Stock.query.all()
-    # stocks = get_stocks()
     return render_template('dashboard.html',stocks = stocks)
 
 @app.route("/register",methods=['GET','POST'])
