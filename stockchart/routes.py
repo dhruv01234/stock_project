@@ -9,7 +9,6 @@ from PIL import Image
 from flask import url_for,current_app
 from stockchart.stock_data import get_latest_closing_price,tickers
 
-    
 @app.route("/")
 @app.route("/dashboard" )
 def dashboard():
@@ -93,7 +92,6 @@ def account():
     image_file = url_for('static',filename='profile_pics/'+current_user.image_file)
     return render_template('account.html',title='Account',image_file=image_file,form = form)
 
-
 @login_required
 @app.route("/portfolio",methods=['GET'])
 def portfolio():
@@ -134,7 +132,6 @@ def portfolio():
 def stock(stock_id):
     stock = Stock.query.get_or_404(stock_id)
     return render_template('stock.html',stock=stock)
-
 
 @app.route("/stock/<stock_id>/buy",methods=['GET','POST'])
 @login_required
